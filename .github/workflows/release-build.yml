@@ -34,7 +34,7 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          echo "::set-env name=VERSION::$VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -51,6 +51,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64,linux/arm
           push: true
-          tags:
+          tags: |
             aidewoode/blackcandy_dev:latest
             aidewoode/blackcandy_dev:${{ env.VERSION }}
