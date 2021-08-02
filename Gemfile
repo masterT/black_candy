@@ -22,7 +22,7 @@ gem 'pagy', '~> 3.5.0'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 # For image attachment
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 # For API request
 gem 'httparty', '~> 0.17.0'
 # For browser detection
